@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew & Bean Café</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #2E2E2E;
+            background: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(111, 78, 55, 0.9);
+            color: #F5EFE6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(111, 78, 55, 0.7), rgba(111, 78, 55, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23C89B3C" width="1200" height="600"/><circle cx="200" cy="150" r="80" fill="%236F4E37" opacity="0.3"/><circle cx="900" cy="400" r="120" fill="%236F4E37" opacity="0.3"/><circle cx="1100" cy="100" r="60" fill="%236F4E37" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #6F4E37;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #C89B3C;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: #F5EFE6;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #6F4E37;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2E2E2E;
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .menu-card h3 {
+            color: #6F4E37;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            color: #C89B3C;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Why Choose Us */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #6F4E37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            color: #6F4E37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #6B6B6B;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #2E2E2E;
+        }
+
+        .contact-info strong {
+            color: #6F4E37;
+        }
+
+        .call-btn {
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #6F4E37;
+            color: #F5EFE6;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">Sample Project – Fictional Business</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Brew & Bean Café</h1>
+        <p>Fresh coffee. Cozy vibes. Open daily.</p>
+        <a href="#menu" class="btn">View Menu</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>Brew & Bean is a neighborhood café serving freshly brewed coffee, handmade desserts, and a calm space to relax or work.</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section-alt">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>Cappuccino</h3>
+                <p class="price">₹180</p>
+            </div>
+            <div class="menu-card">
+                <h3>Cold Coffee</h3>
+                <p class="price">₹200</p>
+            </div>
+            <div class="menu-card">
+                <h3>Chocolate Muffin</h3>
+                <p class="price">₹120</p>
+            </div>
+            <div class="menu-card">
+                <h3>Sandwich</h3>
+                <p class="price">₹150</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="features">
+        <h2>Why Choose Us</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">☕</div>
+                <h3>Freshly Brewed Coffee</h3>
+                <p>Every cup is made fresh with premium beans</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🪑</div>
+                <h3>Comfortable Seating</h3>
+                <p>Relax in our cozy, welcoming atmosphere</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <h3>Free Wi-Fi</h3>
+                <p>Stay connected while you enjoy your coffee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-alt">
+        <h2>Visit Us</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><strong>Address:</strong><br>42 Coffee Lane, Green Park<br>City, State pincode</p>
+                <p><strong>Phone:</strong><br>+91 xyz</p>
+                <a href="tel:+919876543210" class="btn call-btn">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Sample website created for portfolio purposes</p>
+        <p style="margin-top: 10px; opacity: 0.8;">© 2025 Brew & Bean Café – Fictional Business</p>
+    </footer>
+</body>
+</html>
